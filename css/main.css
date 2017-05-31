@@ -1,0 +1,9 @@
+a { color: #00ff00 }
+
+block { background-color: #dddddd }
+
+@media (min-width: 1200px){
+  .container {
+    width: 100% !important;
+  }
+}
