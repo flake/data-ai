@@ -44,3 +44,154 @@ h3 {
   margin-right: 0;
   display:block;
 }
+
+/* Seeing Theory */
+
+/*Define 5 column layout for bootstrap*/
+.col-xs-5th {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.col-xs-5th {
+    width: 20%;
+    float: left;
+}
+
+.icon{
+  width: 70%;
+  padding-top:70%;
+  margin-left: 15%;
+  margin-top: 20px;
+}
+
+.icon{
+  width: 70%;
+  padding-top: 70%;
+  border-radius: 50%;
+  margin-top: 10%;
+  margin-left: 15%;
+  background-color: #1F1C2A;
+}
+
+.icon:hover {
+  background-color: rgba(84, 219, 189, 0.75);/*rgba(31, 28, 42, 0.6);*/
+  transition: all 0.1s ease-in-out;
+}
+
+.icon-title {
+  color: transparent;
+}
+
+#title {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#title h1{
+  font-size: 60px;
+}
+#title p{
+  font-size: 18px;
+}
+
+#first a {
+  color: black;
+}
+#first a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+#likelihood_img{
+  background-image: url(../img/likelihood.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+
+#expectation_img{
+  background-image: url(../img/expectation.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#estimation_img{
+  background-image: url(../img/estimation.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#setTheory_img{
+  background-image: url(../img/setTheory.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#combinatorics_img{
+  background-image: url(../img/combinatorics.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#conditionalProbability_img{
+  background-image: url(../img/conditionalProbability.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#randomVariable_img{
+  background-image: url(../img/randomVariable.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#discreteContinuous_img{
+  background-image: url(../img/discreteContinuous.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#centralLimitTheorem_img{
+  background-image: url(../img/centralLimitTheorem.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#confidenceInterval_img{
+  background-image: url(../img/confidenceInterval.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#pval_img{
+  background-image: url(../img/pval.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#hypothesisTesting_img{
+  background-image: url(../img/hypothesisTesting.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#linearRegression_img{
+  background-image: url(../img/linearRegression.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#correlation_img{
+  background-image: url(../img/correlation.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#anova_img{
+  background-image: url(../img/anova.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
