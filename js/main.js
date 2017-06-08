@@ -48,6 +48,22 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
  	// $('body').append( "<div class='text-center'><img src='/img/noMobile.png' /><h4>Please do not use a mobile device!</h4></div>" );
 }
 
-$('#likelihood-tab').click(function(){
-  $('#tab-sub-coin').click();
+// $('#likelihood-tab').click(function(){
+//   $('#tab-sub-basic').click();
+// });
+
+$('.sec-basic-prob').click(function(){
+  $('#tab-sub-basic').click();
+});
+$('.sec-compnd-prob').click(function(){
+  $('#tab-sub-compnd').click();
+});
+$('.sec-distributions').click(function(){
+  $('#tab-sub-dist').click();
+});
+$('.sec-stat-inference').click(function(){
+  $('#tab-sub-stat').click();
+});
+$('.sec-linear-regression').click(function(){
+  $('#tab-sub-linear').click();
 });

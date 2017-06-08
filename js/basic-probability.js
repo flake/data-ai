@@ -12,7 +12,7 @@ $(window).on("resize", function () {
     // drawPi();
 });
 
-$('#tab-sub-coin').click(function(){
+$('#tab-sub-basic').click(function(){
   setTimeout(drawCoin, 100);
 });
 

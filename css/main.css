@@ -69,7 +69,19 @@ h3 {
 }
 
 .tab-sub {
-  padding-left: 48px !important;
+  padding-left: 36px !important;
+}
+.tab-panel-head {
+  padding: 8px 16px 0 0;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  margin-bottom: 0;
+}
+
+.panel-heading {
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 /* Seeing Theory */
