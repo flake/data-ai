@@ -1,19 +1,20 @@
 //Handles functionality of Probability
 $(window).load(function () {
     drawCoin();
-    // drawDie();
-    // drawPi();
+    drawDie();
 });
 
 //Handles Window Resize
 $(window).on("resize", function () {
     drawCoin();
-    // drawDie();
-    // drawPi();
+    drawDie();
 });
 
 $('#tab-sub-basic').click(function(){
-  setTimeout(drawCoin, 100);
+  setTimeout(function(){
+    drawCoin();
+    drawDie();
+  }, 100);
 });
 
 //Handles CSS animation for coin and die
@@ -261,7 +262,7 @@ function updateDie() {
 
 	svgDie.select(".axis").selectAll(".tick").remove();
 	dieFaces
-	      .attr("xlink:href", function(d,i) { return "../img/dice_"+(i+1)+".png"; })
+	      .attr("xlink:href", function(d,i) { return "img/dice_"+(i+1)+".png"; })
 	      .attr("x", function(d,i) {return xScaleDie(i+1)-1/4*xScaleDie.rangeBand();})
 	      .attr("y", 0)
 	      .attr("width", 3/2*xScaleDie.rangeBand())
@@ -273,22 +274,22 @@ function roll(die){
 	var num = Math.random();
 	var cumProb = cumsum(probDie);
 	if (num<cumProb[0]) {
-		die.css("background-image", "url(../img/dice_1.png");
+		die.css("background-image", "url(img/dice_1.png");
 		countDie[0] = countDie[0] + 1;
 	} else if (num<cumProb[1]) {
-		die.css("background-image", "url(../img/dice_2.png");
+		die.css("background-image", "url(img/dice_2.png");
 		countDie[1] = countDie[1] + 1;
 	} else if (num<cumProb[2]) {
-		die.css("background-image", "url(../img/dice_3.png");
+		die.css("background-image", "url(img/dice_3.png");
 		countDie[2] = countDie[2] + 1;
 	} else if (num<cumProb[3]) {
-		die.css("background-image", "url(../img/dice_4.png");
+		die.css("background-image", "url(img/dice_4.png");
 		countDie[3] = countDie[3] + 1;
 	} else if (num<cumProb[4]) {
-		die.css("background-image", "url(../img/dice_5.png");
+		die.css("background-image", "url(img/dice_5.png");
 		countDie[4] = countDie[4] + 1;
 	} else {
-		die.css("background-image", "url(../img/dice_6.png");
+		die.css("background-image", "url(img/dice_6.png");
 		countDie[5] = countDie[5] + 1;
 	}
 	updateDie();

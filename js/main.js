@@ -53,17 +53,37 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 // });
 
 $('.sec-basic-prob').click(function(){
+  var tid = $(this).attr('tabnav-id');
   $('#tab-sub-basic').click();
+  setTimeout(function(){
+    $('#tab-nav-basic li:eq('+ tid +') a').tab('show');
+  }, 99);
 });
 $('.sec-compnd-prob').click(function(){
+  var tid = $(this).attr('tabnav-id');
   $('#tab-sub-compnd').click();
+  setTimeout(function(){
+    $('#tab-nav-compnd li:eq('+ tid +') a').tab('show');
+  }, 99);
 });
 $('.sec-distributions').click(function(){
+  var tid = $(this).attr('tabnav-id');
   $('#tab-sub-dist').click();
+  setTimeout(function(){
+    $('#tab-nav-dist li:eq('+ tid +') a').tab('show');
+  }, 99);
 });
 $('.sec-stat-inference').click(function(){
+  var tid = $(this).attr('tabnav-id');
   $('#tab-sub-stat').click();
+  setTimeout(function(){
+    $('#tab-nav-stat li:eq('+ tid +') a').tab('show');
+  }, 99);
 });
 $('.sec-linear-regression').click(function(){
+  var tid = $(this).attr('tabnav-id');
   $('#tab-sub-linear').click();
+  setTimeout(function(){
+    $('#tab-nav-linear li:eq('+ tid +') a').tab('show');
+  }, 99);
 });
