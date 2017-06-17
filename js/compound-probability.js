@@ -1,23 +1,15 @@
 //Handles functionality of Compound Probability
 $(window).load(function () {
-  drawSet();
-  drawCP();
-  drawComb();
+  // drawSet();
+  // drawCP();
+  // drawComb();
 });
 
 //Handles Window Resize
 $(window).on("resize", function () {
-  drawSet();
-  drawCP();
-  drawComb();
-});
-
-$('#tab-sub-compnd').click(function(){
-  setTimeout(function(){
-    drawSet();
-    drawCP();
-    drawComb();
-  }, 100);
+  // drawSet();
+  // drawCP();
+  // drawComb();
 });
 
 //*******************************************************************************//
@@ -33,6 +25,7 @@ var setData =  [{name: 'A', cx: 0.5 - 0.1*Math.sqrt(3), cy: 0.4, r: 0.25},
 
 
 //Create SVG
+d3.selectAll('#svgSet svg').remove();
 var svgSet = d3.select("#svgSet").append("svg");
 
 //Create Container
@@ -426,6 +419,7 @@ var i = 0,
     root = [];
 
 //Create SVG
+d3.selectAll('#svgComb svg').remove();
 var svgComb = d3.select("#svgComb").append("svg");
 
 //Create Container
@@ -730,6 +724,8 @@ var eventsData = [
 var mapper = {0: "P(A)", 1: "P(B)", 2: "P(C)"};
 
 //Create SVG
+d3.selectAll('#svgBallCP svg').remove();
+d3.selectAll('#svgProbCP svg').remove();
 var svgBallCP = d3.select('#svgBallCP').append('svg');
 var svgProbCP = d3.select('#svgProbCP').append('svg');
 

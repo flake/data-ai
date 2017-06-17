@@ -1,20 +1,13 @@
 //Handles functionality of Probability
 $(window).load(function () {
-    drawCoin();
-    drawDie();
+    // drawCoin();
+    // drawDie();
 });
 
 //Handles Window Resize
 $(window).on("resize", function () {
-    drawCoin();
-    drawDie();
-});
-
-$('#tab-sub-basic').click(function(){
-  setTimeout(function(){
-    drawCoin();
-    drawDie();
-  }, 100);
+    // drawCoin();
+    // drawDie();
 });
 
 //Handles CSS animation for coin and die
@@ -41,6 +34,7 @@ var coinData = [{data:[{value:countCoin[0],side:'head'},{value:countCoin[1],side
 				{data:[{value:probTheo[0],side:'head'},{value:probTheo[1],side:'tail'}],state:'Theoretical'}];
 
 //Create SVG
+d3.selectAll('#barCoin svg').remove();
 var svgCoin = d3.select("#barCoin").append("svg");
 
 //Create Container
@@ -178,7 +172,7 @@ function drawCoin(){
 	x1ScaleCoin.rangeRoundBands([0, x0ScaleCoin.rangeBand()], .4);
 
 	//Update Container
-	containerCoin.attr("transform", "translate(" + 0 + "," + (padCoin) + ")")
+	containerCoin.attr("transform", "translate(" + 0 + "," + (padCoin) + ")");
 
 	//Update Axis
 	axisCoin.attr("transform", "translate(" + 0 + "," + (height-padCoin+1) + ")").call(xAxisCoin);
@@ -196,6 +190,7 @@ var countDie = [0,0,0,0,0,1];
 var expectedData = [average(countDie)];
 
 //Create SVG and SVG elements
+d3.selectAll('#barDie svg').remove();
 var svgDie = d3.select("#barDie").append("svg");
 
 //Create Container
@@ -478,6 +473,7 @@ var n = 0;
 var width = 500;
 var height = 500;
 
+d3.selectAll("#estSvg canvas").remove();
 var chart = d3.select("#estSvg")
 				.append("canvas")
 				.attr("width", width)

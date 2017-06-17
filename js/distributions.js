@@ -1,12 +1,12 @@
 //Handles functionality of Distributions
 $(window).load(function () {
-  drawDist();
-  draw_sampling();
+  // drawDist();
+  // draw_sampling();
   //drawCLT();
 });
 //Handles Window Resize
 $(window).on("resize", function () {
-	drawDist();
+	// drawDist();
   //drawCLT();
 });
 
@@ -240,6 +240,7 @@ var widthRVD = 350,
     padRVD = 30;
 
 //Create SVG and SVG elements
+d3.selectAll("#rvDist svg").remove();
 var svgRVD = d3.select("#rvDist")
                   .append("svg")
                   .attr("width", "100%")
@@ -372,6 +373,7 @@ var currentPercent = 0;
 
 
 // Create SVG and elements
+d3.selectAll("#graphDist svg").remove();
 var svgDist = d3.select("#graphDist").append("svg");
 
 var xDist = svgDist.append("g").attr("class", "x axis");
@@ -635,6 +637,7 @@ var margin = {top: 15, right: 5, bottom: 15, left: 5};
 var width = 800;//parseInt(d3.select("#graph").style("width")) - margin.left - margin.right,
     height = 500;
 // create svg
+d3.selectAll("#graph svg").remove();
 var svg_clt = d3.select("#graph").append("svg")
   .attr("width", "100%")
   .attr("height", "100%")

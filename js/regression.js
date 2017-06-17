@@ -1,16 +1,16 @@
 //Handles functionality of Regression
 
 $( window ).load(function() {
-  draw_anova();
-  drawOls();
-  drawCorr();
+  // draw_anova();
+  // drawOls();
+  // drawCorr();
 });
 
 //Handles Window Resize
 $(window).on("resize", function () {
-  drawOls();
-  drawCorr();
-  draw_anova();
+  // drawOls();
+  // drawCorr();
+  // draw_anova();
 });
 
 // extracts column from JSON
@@ -33,6 +33,7 @@ var data_ols = [],
     dur = 100;
 
 // create SVG element
+d3.selectAll("#svg_ols svg").remove();
 var svg_ols = d3.select("#svg_ols").append("svg").attr("display", "inline-block");
 
 // create scale functions
@@ -51,9 +52,9 @@ var x_axis_group_ols = svg_ols.append("g").attr("class", "x axis"),
 var clip_ols = svg_ols.append("clipPath").attr("id", "viewOLS").append("rect");
 
 //Add Plot Titles
-var xaxisTextOLS = svg_ols.append("text").attr("text-anchor", "middle"),                
+var xaxisTextOLS = svg_ols.append("text").attr("text-anchor", "middle"),
     yaxisTextOLS = svg_ols.append("text").attr("text-anchor", "middle");
-                    
+
 //Create tool tip
 var tipOLS = d3.tip().attr('class', 'd3-tip').offset([-10, 0]);
 $(window).on('mouseup', tipOLS.hide);
@@ -62,8 +63,8 @@ $(window).on('mouseup', tipOLS.hide);
 var containerOLS = svg_ols.append("g").attr("clip-path", "url(#viewOLS)").call(tipOLS);
 
 // drag functions
-var dragOLS = d3.behavior.drag() 
-    .origin(function(d) { return {x: d3.select(this).attr("cx"), y: d3.select(this).attr("cy")}; }) 
+var dragOLS = d3.behavior.drag()
+    .origin(function(d) { return {x: d3.select(this).attr("cx"), y: d3.select(this).attr("cy")}; })
     .on('drag', function(d) {
         var r = parseFloat(d3.select(this).attr("r")),
             x = Math.max(x_scale_ols.range()[0] + r, Math.min(x_scale_ols.range()[1] - r, d3.event.x)),
@@ -81,7 +82,7 @@ function addDataPointsOLS (){
   yaxisTextOLS.text(keys_ols[y_index]);
 
   // update tooltip
-  tipOLS.html(function(d,i) { 
+  tipOLS.html(function(d,i) {
     return '<strong>' + keys_ols[x_index] + ': </strong>' + round(d[keys_ols[x_index]], 2) + '<br>' +
            '<strong>' + keys_ols[y_index] + ': </strong>' + round(d[keys_ols[y_index]], 2);});
 
@@ -215,7 +216,7 @@ $("#table_ols").delegate('td','click mouseover mouseleave', function(e) {
       if(curr.hasClass("click")) {
         $("#defaultRegresion").css("display","block");
         curr.removeClass("click");
-      } else { 
+      } else {
         $("colgroup").removeClass("click hover");
         curr.addClass("click");
         $(tableExplanation[col - 1]).fadeToggle();
@@ -285,6 +286,7 @@ var xAxisBarCorr = d3.svg.axis().scale(xScaleBarCorr).orient("bottom").ticks(5);
 var yAxisCorr = d3.svg.axis().scale(yScaleCorr).orient("left").ticks(0);
 
 //Create SVG element
+d3.selectAll("#svgCorr svg").remove();
 var svgCorr = d3.select("#svgCorr").append("svg").attr("display", "inline-block");
 //Bar Chart
 var svgBarCorr = d3.select("#svgCorr").append("svg").attr("display", "inline-block");
@@ -301,9 +303,9 @@ var yAxisGroupCorr = svgCorr.append("g").attr("class", "y axis");
 var clipCorr = svgCorr.append("clipPath").attr("id", "viewCorr").append("rect");
 
 //Add Plot Titles
-var xaxisTextCorr = svgCorr.append("text").attr("text-anchor", "middle");                
+var xaxisTextCorr = svgCorr.append("text").attr("text-anchor", "middle");
 var yaxisTextCorr = svgCorr.append("text").attr("text-anchor", "middle");
-                    
+
 //Create tool tip
 var tipCorr = d3.tip().attr('class', 'd3-tip').offset([-10, 0]);
 $(window).on('mouseup', tipCorr.hide);
@@ -312,9 +314,9 @@ $(window).on('mouseup', tipCorr.hide);
 var containerCorr = svgCorr.append("g").attr("clip-path", "url(#viewCorr)").call(tipCorr);
 
 //Drag functions
-var dragCorr = d3.behavior.drag() 
-    .origin(function(d) { 
-        return {x: d3.select(this).attr("cx"), y: d3.select(this).attr("cy")}; }) 
+var dragCorr = d3.behavior.drag()
+    .origin(function(d) {
+        return {x: d3.select(this).attr("cx"), y: d3.select(this).attr("cy")}; })
     .on('drag', function(d) {
         var r = parseFloat(d3.select(this).attr("r")),
             x = Math.max(xScaleCorr.range()[0] + r, Math.min(xScaleCorr.range()[1] - r, d3.event.x)),
@@ -333,7 +335,7 @@ function add_data_corr() {
   yaxisTextCorr.text(keys_corr[y_key]);
 
   // update tool tip html
-  tipCorr.html(function(d,i) { 
+  tipCorr.html(function(d,i) {
     return '<strong>' + keys_corr[x_key] + ': </strong>' + round(d[keys_corr[x_key]],2) + '<br>' +
            '<strong>' + keys_corr[y_key] + ': </strong>' + round(d[keys_corr[y_key]],2); });
 
@@ -428,8 +430,8 @@ linearGradient
     .attr("x2", "100%")
     .attr("y2", "0%");
 //Append multiple color stops by using D3's data/enter step
-linearGradient.selectAll("stop") 
-    .data( pScaleCorr.range() )                  
+linearGradient.selectAll("stop")
+    .data( pScaleCorr.range() )
     .enter().append("stop")
     .attr("offset", function(d,i) { return i/(pScaleCorr.range().length-1); })
     .attr("stop-color", function(d) { return d; });
@@ -497,12 +499,12 @@ function corr_table_calc() {
     };
   };
   if (variables == null) return;
-  var p = variables[0], 
-      b0x = variables[1], 
-      b1x = variables[2], 
-      xmean = variables[3], 
-      b0y = variables[4], 
-      b1y = variables[5], 
+  var p = variables[0],
+      b0x = variables[1],
+      b1x = variables[2],
+      xmean = variables[3],
+      b0y = variables[4],
+      b1y = variables[5],
       ymean = variables[6];
 
   //Draw the line
@@ -641,11 +643,12 @@ function drawCorr() {
 // Constants
 var data_anova = [],
     sf_anova = 0.05,
-    color_anova = ['#FF9B3C', '#00D0A2', '#64BCFF', '#FF4A3C', '#FFFF00', 
+    color_anova = ['#FF9B3C', '#00D0A2', '#64BCFF', '#FF4A3C', '#FFFF00',
                    '#7272FF', '#55D733', '#1263D2', '#FF0080', '#A1FF00',
                    '#FF1300', '#03899C', '#FFC500', '#2419B2', '#4169E1'];
 
 // Create SVG element
+d3.selectAll("#svg_anova svg").remove();
 var svg_anova = d3.select("#svg_anova").append("svg").attr("display", "inline-block");
 
 // Create scale functions
@@ -661,19 +664,19 @@ var x_axis_group_anova = svg_anova.append("g").attr("class", "x axis"),
     y_axis_group_anova = svg_anova.append("g").attr("class", "y axis");
 
 // Add axis titles
-var x_axis_title_anova = svg_anova.append("text").attr("text-anchor", "middle"),                
+var x_axis_title_anova = svg_anova.append("text").attr("text-anchor", "middle"),
     y_axis_title_anova = svg_anova.append("text").attr("text-anchor", "middle");
 
 // Create tool tip
 var tip_anova = d3.tip().attr('class', 'd3-tip').offset([-10, 0]);
 
 // Drag function
-var drag_anova = d3.behavior.drag() 
-    .origin(function(d) { 
-        return {x: d3.select(this).attr("cx"), y: d3.select(this).attr("cy")}; }) 
+var drag_anova = d3.behavior.drag()
+    .origin(function(d) {
+        return {x: d3.select(this).attr("cx"), y: d3.select(this).attr("cy")}; })
     .on('drag', function(d) {
         var r = parseFloat(d3.select(this).attr("r")),
-            y = Math.max(y_scale_anova.range()[1] + r, 
+            y = Math.max(y_scale_anova.range()[1] + r,
                 Math.min(y_scale_anova.range()[0] - r, d3.event.y));
         d.v = y_scale_anova.invert(y);
         tip_anova.show(d,this);
@@ -837,7 +840,7 @@ $("#table_anova").delegate('td','click mouseover mouseleave', function(e) {
       if(currColumn.hasClass("click")) {
         $("#default_anova").css("display","block");
         currColumn.removeClass("click");
-      } else { 
+      } else {
         $("colgroup").removeClass("click");
         currColumn.removeClass("hover");
         currColumn.addClass("click");
@@ -877,4 +880,3 @@ function draw_anova() {
   // update statistics
   calc_statistic_anova();
 }
-

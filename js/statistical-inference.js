@@ -2,7 +2,7 @@
 
 // load visualizations
 $( window ).load(function() {
-  $('#myModal').modal('show');
+  // $('#myModal').modal('show');
 });
 
 // window resize
@@ -33,6 +33,7 @@ var dt = 600,
     curr_param_ci;
 
 // create svg
+d3.selectAll("#svg_ci svg").remove();
 var svg_ci = d3.select("#svg_ci").append("svg")
   .attr("width", "100%")
   .attr("height", "100%")
@@ -72,7 +73,7 @@ function pdf_data_ci(start, end) {
   mu = jStat[curr_dist_ci].mean.apply(null, curr_param_ci);
   var datum = d3.range(start, end, 0.01).map(function(x) {
       var param = [x].concat(curr_param_ci);
-      return [x, jStat[curr_dist_ci].pdf.apply(null, param)]; 
+      return [x, jStat[curr_dist_ci].pdf.apply(null, param)];
   })
   return datum;
 }
@@ -222,7 +223,7 @@ $("#alpha").on("slide", function(e) {
 // start buttons
 $('#startCI').on('click', function() {
   if (curr_dist_ci != null) {
-    interval_clt = setInterval(function() { 
+    interval_clt = setInterval(function() {
       tick();
     }, dt);
   $('.sample_btn').toggle();
@@ -243,19 +244,19 @@ function reset_ci() {
   update_rect_ci();
 }
 
-var view_parameters = {'uniform':[-6,6], 
-                        'normal':[-6,6], 
-                        'studentt':[-6,6], 
-                        'chisquare':[-1,11], 
-                        'exponential':[-1,5], 
-                        'centralF':[-1,5], 
+var view_parameters = {'uniform':[-6,6],
+                        'normal':[-6,6],
+                        'studentt':[-6,6],
+                        'chisquare':[-1,11],
+                        'exponential':[-1,5],
+                        'centralF':[-1,5],
                         '': []},
-    initial_parameters = {'uniform':[-5,5], 
-                          'normal':[0,1], 
-                          'studentt':[5], 
-                          'chisquare':[5], 
-                          'exponential':[1], 
-                          'centralF':[5,5], 
+    initial_parameters = {'uniform':[-5,5],
+                          'normal':[0,1],
+                          'studentt':[5],
+                          'chisquare':[5],
+                          'exponential':[1],
+                          'centralF':[5,5],
                           '': []};
 
 // handle links
@@ -289,11 +290,12 @@ var tip_ci = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    var n = counts[0] + counts[1]; 
-    return d + "/" + n + " = " +round(d/n, 2); 
+    var n = counts[0] + counts[1];
+    return d + "/" + n + " = " +round(d/n, 2);
   });
 
 // create SVG and SVG elements
+d3.selectAll("#ciDist svg").remove();
 var svg_ci_sample = d3.select("#ciDist")
   .append("svg")
   .attr("width", "100%")
@@ -351,6 +353,7 @@ var m_pval = {top: 20, right: 10, bottom: 20, left: 10},
     w_pval = 700,
     h_pval = 500;
 // create svg
+d3.selectAll("#svg_pval svg").remove();
 var svg_pval = d3.select("#svg_pval").append("svg")
   .attr("width", "100%")
   .attr("height", "100%")
@@ -395,7 +398,7 @@ svg_pval.append("clipPath")
 function pdf_data(start, end) {
   var datum = d3.range(start, end, 0.01).map(function(x) {
       var param = [x].concat(curr_param);
-      return [x, jStat[curr_dist].pdf.apply(null, param)]; 
+      return [x, jStat[curr_dist].pdf.apply(null, param)];
     })
     return datum;
 }
@@ -429,9 +432,9 @@ function draw_obs(obs, dur) {
       .x(function(d) { return x_scale_pval(d[0])})
       .y0(y_scale_pval(0))
       .y1(function(d) { return y_scale_pval(d[1])})
-      .defined(function(d) { 
+      .defined(function(d) {
         if (tail == 1)  return !(d[0] < obs);
-        else            return !((-1 * obs < d[0]) && (d[0] < obs)); 
+        else            return !((-1 * obs < d[0]) && (d[0] < obs));
       })
       .interpolate("linear");
   // transition pdf area
@@ -457,13 +460,13 @@ $("#observation").change(function(e) {
 })
 
 var dists = ['uniform', 'normal', 'studentt', 'chisquare', 'exponential', 'centralF', 'gamma', 'beta', ''],
-    initial_parameters = {'uniform':[-5,5], 
-                          'normal':[0,1], 
-                          'studentt':[5], 
-                          'chisquare':[5], 
-                          'exponential':[1], 
-                          'centralF':[5,5], 
-                          'gamma': [1,1], 
+    initial_parameters = {'uniform':[-5,5],
+                          'normal':[0,1],
+                          'studentt':[5],
+                          'chisquare':[5],
+                          'exponential':[1],
+                          'centralF':[5,5],
+                          'gamma': [1,1],
                           'beta': [1,1],
                           '': []};
 
@@ -540,11 +543,12 @@ var tip_ht = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    var n = Math.max(1, counts_ht[0] + counts_ht[1]); 
-    return d + "/" + n + " = " +round(d/n, 2); 
+    var n = Math.max(1, counts_ht[0] + counts_ht[1]);
+    return d + "/" + n + " = " +round(d/n, 2);
   });
 
 // create svg
+d3.selectAll("#svg_ht svg").remove();
 var svg_ht = d3.select("#svg_ht").append("svg")
   .attr("width", "100%")
   .attr("height", "100%")
@@ -597,7 +601,7 @@ function pdf_data_ht(view, parameters) {
       end = view[1],
       datum = d3.range(start, end, 0.01).map(function(x) {
         var param = [x].concat(parameters);
-        return [x, jStat.normal.pdf.apply(null, param)]; 
+        return [x, jStat.normal.pdf.apply(null, param)];
       })
   return datum;
 }
@@ -644,7 +648,7 @@ var drag_rr = d3.behavior.drag()
     z_crit_ht = Math.max(view_ht[0], Math.min(view_ht[1], x_scale_ht.invert(d3.event.x)));
     reset_ht();
     draw_rr_ht();
-  }) 
+  })
 
 // top clip path
 svg_ht.append("clipPath")
@@ -659,7 +663,7 @@ svg_ht.append("clipPath")
 var rregion = svg_ht.append("g").attr("clip-path", "url(#mid_ht)");
 rregion.append("rect").attr('class', "rr_rect");
 rregion.append("line").attr('class', "rr_line").call(drag_rr);
-  
+
 // Update null hypothesis
 function draw_rr_ht() {
   // transition rect
