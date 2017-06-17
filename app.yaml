@@ -1,0 +1,30 @@
+# @Author: rajasekhar
+# @Date:   2016-11-02T13:28:20+05:30
+# @Last modified by:   rajasekhar
+# @Last modified time: 2016-11-06T07:37:05+05:30
+
+
+
+application: turbomech-148112
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
+- url: /img
+  static_dir: img
+- url: /fonts
+  static_dir: fonts
+- url: /.*
+  script: data-ai.app
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
